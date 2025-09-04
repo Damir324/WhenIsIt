@@ -1,1 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Calendar</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; }
+    .calendar { width: 300px; margin: auto; }
+    .header { display: flex; justify-content: space-between; align-items: center; }
+    .days { display: grid; grid-template-columns: repeat(7, 1fr); margin-top: 10px; }
+    .day, .date { padding: 10px; border: 1px solid #ccc; }
+    .date { height: 40px; }
+  </style>
+</head>
+<body>
+  <div class="calendar">
+    <div class="header">
+      <button onclick="changeMonth(-1)">←</button>
+      <h2 id="monthYear"></h2>
+      <button onclick="changeMonth(1)">→</button>
+    </div>
+    <div class="days" id="days">
+      <div class="day">Sun</div><div class="day">Mon</div><div class="day">Tue</div>
+      <div class="day">Wed</div><div class="day">Thu</div><div class="day">Fri</div><div class="day">Sat</div>
+    </div>
+    <div class="days" id="dates"></div>
+  </div>
 
+  <script>
+    let currentDate = new Date();
+
+    function renderCalendar() {
+      const monthYear = document.getElementById("monthYear");
+      const dates = document.getElementById("dates");
+      dates.innerHTML = "";
+
+      const year = currentDate.getFullYear();
+      const month = currentDate.getMonth();
+      const firstDay = new Date(year, month, 1).getDay();
+      const lastDate = new Date(year, month + 1, 0).getDate();
+
+      monthYear.textContent = currentDate.toLocaleString("default", { month: "long", year: "numeric" });
+
+      for (let i = 0; i < firstDay; i++) {
+        dates.innerHTML += `<div class="date"></div>`;
+      }
+
+      for (let i = 1; i <= lastDate; i++) {
+        dates.innerHTML += `<div class="date">${i}</div>`;
+      }
+    }
+
+    function changeMonth(delta) {
+      currentDate.setMonth(currentDate.getMonth() + delta);
+      renderCalendar();
+    }
+
+    renderCalendar();
+  </script>
+</body>
+</html>
