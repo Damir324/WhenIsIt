@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>When is it</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1 class="brand">When is it</h1>
+    <p class="subtitle">Turn any syllabus into a clear Google Calendar.</p>
+  </header>
+
+  <main>
+    <!-- Upload section -->
+    <section class="card">
+      <h2>Upload your syllabus</h2>
+      <label class="dropzone" for="file-input" id="dropzone">
+        <strong>Select a file</strong> or drag and drop here
+        <br /><small id="file-hint">No file selected</small>
+      </label>
+      <input id="file-input" type="file" accept=".pdf,.doc,.docx,.txt" />
+      <div class="actions">
+        <button class="btn">Process File</button>
+      </div>
+    </section>
+
+    <!-- Link section -->
+    <section class="card">
+      <h2>Add a course link</h2>
+      <div class="field">
+        <input type="url" placeholder="Paste a public course link" />
+        <button class="btn secondary">Add</button>
+      </div>
+      <ul class="list"></ul>
+    </section>
+
+    <!-- Preview section -->
+    <section class="card">
+      <h2>Preview extracted items</h2>
+      <ul class="list"></ul>
+      <div class="actions">
+        <button class="btn ghost">Load Example Items</button>
+        <button class="btn danger">Clear</button>
+      </div>
+    </section>
+
+    <!-- Calendar section -->
+    <section class="card">
+      <h2>Connect Google Calendar</h2>
+      <div class="actions">
+        <button class="btn">Sign in with Google</button>
+        <button class="btn ghost">Sign out</button>
+      </div>
+      <div class="actions">
+        <button class="btn secondary">Add to Calendar</button>
+      </div>
+      <p class="meta">Not signed in.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p class="meta">© 2025 When is it. All rights reserved.</p>
+  </footer>
+</body>
+</html>
