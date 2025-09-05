@@ -3,77 +3,66 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Syllabus → Calendar</title>
+  <title>When is it</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <div class="title">
-      <h1>📚 Syllabus → Google Calendar</h1>
-      <span class="badge">Hackathon MVP</span>
-    </div>
-    <p class="subtitle">Upload a syllabus or paste public courseware links. Connect Google Calendar and push extracted assignments & milestones.</p>
+    <h1 class="brand">When is it</h1>
+    <p class="subtitle">Turn any syllabus into a clear Google Calendar.</p>
   </header>
 
   <main>
-    <div class="grid">
-      <!-- Upload card -->
-      <section class="card col-6">
-        <h2>1) Upload syllabus files</h2>
-        <p>PDF, DOCX, or TXT are supported for now.</p>
-        <label class="dropzone" for="file-input" id="dropzone">
-          <strong>Drag & drop</strong> your syllabus here or click to browse
-          <br /><small id="file-hint">No file selected</small>
-        </label>
-        <input id="file-input" type="file" accept=".pdf,.doc,.docx,.txt" />
-        <div class="actions">
-          <button class="btn ghost" id="clear-file">Clear</button>
-          <button class="btn" id="parse-file">Parse (stub)</button>
-        </div>
-      </section>
+    <!-- Upload section -->
+    <section class="card">
+      <h2>Upload your syllabus</h2>
+      <label class="dropzone" for="file-input" id="dropzone">
+        <strong>Select a file</strong> or drag and drop here
+        <br /><small id="file-hint">No file selected</small>
+      </label>
+      <input id="file-input" type="file" accept=".pdf,.doc,.docx,.txt" />
+      <div class="actions">
+        <button class="btn">Process File</button>
+      </div>
+    </section>
 
-      <!-- Public courseware card -->
-      <section class="card col-6">
-        <h2>2) Add public courseware link</h2>
-        <div class="field">
-          <input id="course-url" type="url" placeholder="https://example.edu/course/syllabus" />
-          <button class="btn secondary" id="add-url">Add</button>
-        </div>
-        <ul class="list" id="url-list"></ul>
-      </section>
+    <!-- Link section -->
+    <section class="card">
+      <h2>Add a course link</h2>
+      <div class="field">
+        <input type="url" placeholder="Paste a public course link" />
+        <button class="btn secondary">Add</button>
+      </div>
+      <ul class="list"></ul>
+    </section>
 
-      <!-- Preview card -->
-      <section class="card col-6">
-        <h2>3) Preview extracted items</h2>
-        <ul class="list" id="items"></ul>
-        <div class="actions">
-          <button class="btn ghost" id="seed-items">Seed with examples</button>
-          <button class="btn danger" id="clear-items">Clear items</button>
-        </div>
-      </section>
+    <!-- Preview section -->
+    <section class="card">
+      <h2>Preview extracted items</h2>
+      <ul class="list"></ul>
+      <div class="actions">
+        <button class="btn ghost">Load Example Items</button>
+        <button class="btn danger">Clear</button>
+      </div>
+    </section>
 
-      <!-- Google Calendar card -->
-      <section class="card col-6">
-        <h2>4) Connect Google Calendar</h2>
-        <div class="actions">
-          <button class="btn" id="authorize_button">Authorize</button>
-          <button class="btn ghost" id="signout_button" style="display:none">Sign out</button>
-        </div>
-        <div class="actions">
-          <button class="btn secondary" id="push_all">Push all to Calendar</button>
-        </div>
-        <p class="meta" id="status">Not signed in.</p>
-      </section>
-    </div>
+    <!-- Calendar section -->
+    <section class="card">
+      <h2>Connect Google Calendar</h2>
+      <div class="actions">
+        <button class="btn">Sign in with Google</button>
+        <button class="btn ghost">Sign out</button>
+      </div>
+      <div class="actions">
+        <button class="btn secondary">Add to Calendar</button>
+      </div>
+      <p class="meta">Not signed in.</p>
+    </section>
   </main>
 
   <footer>
-    <p><strong>Wiring tips:</strong> Your AI (Colab) should output a JSON array of items like <code>[{ title, due, notes }]</code>. POST that to this page (or your Flask backend).</p>
+    <p class="meta">© 2025 When is it. All rights reserved.</p>
   </footer>
-
-  <script src="script.js"></script>
-  <script async defer src="https://accounts.google.com/gsi/client" onload="window.gisLoaded && gisLoaded()"></script>
-  <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
 </body>
 </html>
